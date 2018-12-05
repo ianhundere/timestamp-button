@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class Timebutton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dates: []
+    };
+  }
+  _showTime = () => {
+    this.setState({
+      dates: [...this.state.dates, new
+        Date().toLocaleString()]
+    });
+  }
   render() {
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <body className="App-header">
+          <button type="submit" onClick={this._showTime}>time</button>
+          <ul>
+            {this.state.dates.map((date) => {
+              return <li key={date}>{date}</li>;
+            })}
+          </ul>
+        </body>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default Timebutton;
